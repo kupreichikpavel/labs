@@ -22,6 +22,8 @@ void countOfAnyElements(int array[], int arraySize);
 
 void multiElementAfterMax(int array[], int arraySize);
 
+void sortElementsOfArray(int array[], int arraySize);
+
 int main() {
     int array[100];
     setlocale(LC_ALL, "Russian");
@@ -34,10 +36,12 @@ back2:
         goto back2;
     }
     chooseHowToFillArray(array, arraySize);
-    printArray(array, arraySize);
     countOfAnyElements(array, arraySize);
     multiElementAfterMax(array, arraySize);
-
+    printArray(array, arraySize);
+    sortElementsOfArray(array, arraySize);
+    cout << "Ваш массив отсортирован" << endl;
+    printArray(array, arraySize);
     return 0;
 }
 
@@ -118,14 +122,25 @@ void multiElementAfterMax(int array[], int arraySize) {
     for (number; number < arraySize; number++) {
         multi *= array[number];
     }
-        cout << "Произведение элементов после максимального по модулю значения- " << multi << endl;
+    cout << "Произведение элементов после максимального по модулю значения- " << multi << endl;
+}
+
+void sortElementsOfArray(int array[], int arraySize) {
+    for (int i = 0; i < arraySize - 1; i++) {
+        for (int j = 0; j < arraySize - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                int m = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = m;
+            }
+        }
     }
-
-
+}
 
 void printArray(int array[], int arraySize) {
     cout << "Ваш массив:" << endl;
     for (int i = 0; i < arraySize; i++) {
-        cout << array[i] << " " << endl;
+        cout << array[i] << " ";
     }
+    cout << endl;
 }
