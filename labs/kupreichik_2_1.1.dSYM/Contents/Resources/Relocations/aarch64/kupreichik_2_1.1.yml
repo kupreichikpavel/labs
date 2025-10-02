@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     kupreichik_2_1.1
+relocations:     []
+...
